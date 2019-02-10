@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 14:45:34 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/10 22:07:03 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/02/10 18:53:14 by ggerhold          #+#    #+#             */
+/*   Updated: 2019/02/10 19:39:04 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "fillit.h"
 
-# include "get_next_line.h"
-# include "libft/libft.h"
-# include <fcntl.h>
+char	*ft_map(size_t size)
+{
+	char	*map;
+	size_t	len;
+	size_t	i;
+	size_t	tmp;
 
-typedef struct	s_smth {
-	int		la;
-	int		bla;
-}				t_smth;
-
-int		ft_fchecker(char *file);
-int		ft_mchecker(char *file);
-int		ft_nbtetr(char *file);
-int		get_next_line(const int fd, char **line);
-int		*ft_coder(char *file);
-char	*ft_map(size_t size);
-char	*ft_filler(int *code);
-
-#endif
+	len = (size + 1) * size;
+	if (!(map = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	tmp = size;
+	while (i < len)
+	{
+		if (tmp--)
+			map[i++] = '.';
+		else
+		{
+			map[i++] = '\n';
+			tmp = size;
+		}
+	}
+	map[i] = '\0';
+	return (map);
+}
