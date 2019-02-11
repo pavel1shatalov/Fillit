@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_recur.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/10 18:53:14 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 19:36:11 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/02/11 15:41:30 by ggerhold          #+#    #+#             */
+/*   Updated: 2019/02/11 22:24:29 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_map(size_t size)
+int		ft_recur(int *code, char *map, char *file)
 {
-	char	*map;
-	size_t	len;
-	size_t	i;
-	size_t	tmp;
-
-	len = (size + 1) * size;
-	if (!(map = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = 0;
-	tmp = size;
-	while (i < len)
+	if (!*code)
 	{
-		if (tmp--)
-			map[i++] = '.';
-		else
-		{
-			map[i++] = '\n';
-			tmp = size;
-		}
+		printf("\n%s\n", map);
+		return (1);
 	}
-	map[i] = '\0';
-	return (map);
+	if (ft_fill(code, map, file))
+		if (ft_recur(code + 3, map, file))
+			return (1);
+	//printf("bla\n");
+	if (ft_backtrack(code, map, file))
+		return (1);
+	return (0); //seems like never...
 }

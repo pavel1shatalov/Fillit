@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_recur.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/10 18:53:14 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 19:36:11 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/02/11 15:41:30 by ggerhold          #+#    #+#             */
+/*   Updated: 2019/02/11 18:14:39 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_map(size_t size)
+int		ft_recur(int *code, char *map)
 {
-	char	*map;
-	size_t	len;
-	size_t	i;
-	size_t	tmp;
+	char *place;
 
-	len = (size + 1) * size;
-	if (!(map = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = 0;
-	tmp = size;
-	while (i < len)
+	if (!*code)
 	{
-		if (tmp--)
-			map[i++] = '.';
-		else
-		{
-			map[i++] = '\n';
-			tmp = size;
-		}
+		printf("%s\n", map);
+		return (1);
 	}
-	map[i] = '\0';
-	return (map);
+	if (place = ft_find_place(code, map))
+	{
+		ft_fill(code, place);
+		if (ft_recur(code + 3, map))
+			return (1);
+	}
+	ft_del(code - 3, map);
+	ft_recur(code - 3, map + 1); //map is changed!
+
+	return (0);
 }

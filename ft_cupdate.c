@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_cupdate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/10 18:53:14 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 19:36:11 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/02/11 21:43:21 by ggerhold          #+#    #+#             */
+/*   Updated: 2019/02/11 22:04:25 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*ft_map(size_t size)
+void	ft_cupdate(int *code)
 {
-	char	*map;
-	size_t	len;
-	size_t	i;
-	size_t	tmp;
+	int		i;
 
-	len = (size + 1) * size;
-	if (!(map = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
 	i = 0;
-	tmp = size;
-	while (i < len)
+	while (code[i])
 	{
-		if (tmp--)
-			map[i++] = '.';
-		else
-		{
-			map[i++] = '\n';
-			tmp = size;
-		}
+		if (code[i] != 1)
+			code[i]++;
+		i++;
 	}
-	map[i] = '\0';
-	return (map);
 }
