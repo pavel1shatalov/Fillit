@@ -22,7 +22,7 @@ int		ft_recur(int *code, char *map, char *file)
 	if (ft_fill(code, map, file))
 		if (ft_recur(code + 3, map, file))
 			return (1);
-	//printf("bla\n");
+	printf("KILL\n%s\n", map);
 	if (ft_backtrack(code, map, file))
 		return (1);
 	return (0); //seems like never...

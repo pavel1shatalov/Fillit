@@ -45,13 +45,14 @@ int		ft_backtrack(int *code, char *map, char *file)
 		}
 		else
 		{
-	//		printf("superbla\n");
+			printf("DOUBLE KILL\n%s\n", map);
 			if (ft_backtrack(code - 3, map, file))
 				return (1);
 		}
 	}
 	else
 	{
+		printf("UPDATE\n");
 		ft_cupdate(code);
 		if (ft_recur(code, ft_mupdate(map), file))
 			return (1);

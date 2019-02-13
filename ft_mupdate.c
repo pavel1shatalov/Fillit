@@ -19,5 +19,6 @@ char	*ft_mupdate(char *map)
 	size = 0;
 	while (map[size] != '\n')
 		size++;
+	ft_strdel(&map);
 	return (ft_map(size + 1));
 }

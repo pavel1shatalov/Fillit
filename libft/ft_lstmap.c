@@ -21,7 +21,7 @@ static	void	ft_lstcleaner(t_list *lst)
 		free(lst->content);
 		cp = lst->next;
 		free(lst);
-		lst = lst->next;
+		lst = cp;
 	}
 }
 

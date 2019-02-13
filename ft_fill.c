@@ -18,7 +18,7 @@ int		ft_fill(int *code, char *map, char *file)
 	int		i;
 
 	nb = ft_nblock(code, file);
-//	printf("%d\n", nb + 1);
+	printf("%d\n", nb + 1);
 	i = 0;
 	while (map[i])
 	{
