@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 14:43:59 by thansen          ###   ########.fr       */
+/*   Updated: 2019/02/14 17:27:37 by thansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int		main(int ac, char **av)
 		else
 			printf("\n%d", code[i++]);
 	}
-	map = ft_map(4);//SET ANOTHER SIZE
-	printf("\n");
 	n = ft_nbtetr(av[1]);
+	map = ft_map(ft_sqrt(4 * n));
+	printf("%s", map);
+
 	ft_recur(code, map, n);
-	//printf("\n%s\n", ft_filler(code));
 	return (0);
 }

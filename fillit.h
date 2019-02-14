@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:45:34 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 13:51:07 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:52:31 by thansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		ft_backtrack(int *code, char *map, int n);
 int		ft_nblock(int *code, int n);
 void	ft_cupdate(int *code);
 char	*ft_mupdate(char *map);
+int		ft_sqrt(int	n);
 
 #endif
