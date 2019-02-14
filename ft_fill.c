@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 17:53:01 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 14:05:08 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:55:15 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		ft_fill(int *code, char *map, int n)
 	int		i;
 
 	nb = ft_nblock(code, n);
-	printf("%d\n", nb + 1);
+	ft_putstr(ft_itoa(nb + 1));
+	ft_putchar('\n');
 	i = 0;
-	// check for addresses
 	while (map[i])
 	{
 		if (map[i] == '.' \
