@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:45:34 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 16:44:53 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 18:03:17 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_backtrack(int *code, char *map, int n);
 int		ft_nblock(int *code, int n);
 void	ft_cupdate(int *code);
 char	*ft_mupdate(int *code, char *map);
-int		ft_search(char *map, int nb);
-void 	ft_delete(char *map, int nb);
+int		ft_sqrt(int	n);
 
 #endif

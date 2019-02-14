@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mupdate.c                                       :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thansen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 21:43:30 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 18:02:11 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/02/14 14:44:53 by thansen           #+#    #+#             */
+/*   Updated: 2019/02/14 15:52:20 by thansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_cupdate(int *code)
+int		ft_sqrt(int n)
 {
-	int		i;
+	int		root;
 
-	i = 0;
-	while (code[i])
+	root = n;
+	while (n != root * root && root != 0)
+		root--;
+	if (!root)
+		return (ft_sqrt(n + 1));
+	else
 	{
-		if (code[i] != 1)
-			code[i]++;
-		i++;
+		printf("%d", root);
+		return (root);
 	}
-}
-
-char	*ft_mupdate(int *code, char *map)
-{
-	int		size;
-
-	ft_cupdate(code);
-	size = 0;
-	while (map[size] != '\n')
-		size++;
-	ft_strdel(&map);
-	return (ft_map(size + 1));
 }

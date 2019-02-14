@@ -6,7 +6,11 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/02/14 15:43:33 by ggerhold         ###   ########.fr       */
+=======
+/*   Updated: 2019/02/14 17:27:37 by thansen          ###   ########.fr       */
+>>>>>>> origin/thansen
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +36,8 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	code = ft_coder(av[1]);
-	//map = ft_map(2 * ft_sqrt(n));
-	map = ft_map(4);
 	n = ft_nbtetr(av[1]);
+	map = ft_map(ft_sqrt(4 * n));
 	ft_recur(code, map, n);
 	return (0);
 }
