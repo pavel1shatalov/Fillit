@@ -6,7 +6,7 @@
 /*   By: thansen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:44:53 by thansen           #+#    #+#             */
-/*   Updated: 2019/02/14 15:52:20 by thansen          ###   ########.fr       */
+/*   Updated: 2019/02/14 18:26:19 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@ int		ft_sqrt(int n)
 {
 	int		root;
 
-	root = n;
+	root = 11;
 	while (n != root * root && root != 0)
 		root--;
 	if (!root)
 		return (ft_sqrt(n + 1));
-	else
-	{
-		printf("%d", root);
-		return (root);
-	}
+	return (root);
 }

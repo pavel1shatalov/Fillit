@@ -6,23 +6,19 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:39:33 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 16:51:58 by thansen          ###   ########.fr       */
+/*   Updated: 2019/02/14 22:10:10 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fillit.h"
 
-int		*ft_coder(char *file)
+char	*ft_tetr(char *file)
 {
 	int		fd;
 	char	*line;
-	char 	*temp;
+	char	*temp;
 	char	*tetr;
 	char	*full;
-	int		*code;
-	int		i;
-	int		cnt;
-	int		cut;
 
 	fd = open(file, O_RDONLY);
 	tetr = ft_strnew(0);
@@ -35,11 +31,20 @@ int		*ft_coder(char *file)
 		ft_strdel(&full);
 		ft_strdel(&line);
 	}
-	printf("%s", tetr);
+	return (tetr);
+}
+
+int		*ft_coder(char *tetr, int n)
+{
+	int		*code;
+	int		i;
+	int		cnt;
+	int		cut;
+
 	i = 0;
 	cnt = 0;
 	cut = 0;
-	if (!(code = (int *)malloc(sizeof(int) * (3 * ft_nbtetr(file) + 1))))
+	if (!(code = (int *)malloc(sizeof(int) * (3 * n + 1))))
 		return (NULL);
 	while (tetr[i])
 	{
@@ -60,5 +65,17 @@ int		*ft_coder(char *file)
 		i++;
 	}
 	*code = 0;
-	return (code - 3 * ft_nbtetr(file));
+	return (code - 3 * n);
+}
+
+int		*ft_code(char *file, int n, size_t size)
+{
+	int		*code;
+	int		remainder;
+
+	remainder = size - 4;
+	code = ft_coder(ft_tetr(file), n);
+	while (remainder--)
+		ft_cupdate(code);
+	return (code);
 }

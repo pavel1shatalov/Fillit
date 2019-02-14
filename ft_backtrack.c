@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 15:08:46 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 16:43:24 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:38:28 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,17 @@ int		ft_backtrack(int *code, char *map, int n)
 	if (nb)
 	{
 		cut = ft_search(map, nb);
+		ft_putstr("delete: ");
+		ft_putchar('A' + (nb - 1));
+		ft_putchar('\n');
+		ft_putstr(map);
 		ft_delete(map, nb);
+		ft_putstr("deleted: ");
+		ft_putchar('A' + (nb - 1));
+		ft_putchar('\n');
+		ft_putstr("I want to find place starting from the ");
+		ft_putstr(ft_itoa(cut));
+		ft_putstr(" + 1 cell (first cell in a row is 0, 7, ..., 35)\n");
 		if (ft_fill(code - 3, map + cut + 1, n))
 			if (ft_recur(code, map, n))
 				return (1);
