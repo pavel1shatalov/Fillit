@@ -6,19 +6,16 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:42:41 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 20:15:56 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 14:05:46 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_nblock(int *code, char *file)
+int		ft_nblock(int *code, int n)
 {
-	int		nb;
-
-	nb = ft_nbtetr(file);
 	while (*(code += 3))
-		nb--;
-	nb--;
-	return (nb);
+		n--;
+	n--;
+	return (n);
 }

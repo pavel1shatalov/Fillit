@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:45:34 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 22:17:54 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:51:07 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int		ft_nbtetr(char *file);
 int		get_next_line(const int fd, char **line);
 int		*ft_coder(char *file);
 char	*ft_map(size_t size);
-int		ft_fill(int *code, char *map, char *file);
-int		ft_recur(int *code, char *map, char *file);
-int		ft_backtrack(int *code, char *map, char *file);
-int		ft_nblock(int *code, char *file);
+int		ft_fill(int *code, char *map, int n);
+int		ft_recur(int *code, char *map, int n);
+int		ft_backtrack(int *code, char *map, int n);
+int		ft_nblock(int *code, int n);
 void	ft_cupdate(int *code);
 char	*ft_mupdate(char *map);
 

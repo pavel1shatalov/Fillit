@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/11 22:25:30 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:52:07 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(int ac, char **av)
 	int		fd;
 	int		*code;
 	int		i;
+	int		n;
 	char	*map;
 
 	if (ac != 2 || (fd = open(av[1], O_RDONLY)) < 0)
@@ -45,7 +46,8 @@ int		main(int ac, char **av)
 	}
 	map = ft_map(4);//SET ANOTHER SIZE
 	printf("\n");
-	ft_recur(code, map, av[1]);
+	n = ft_nbtetr(av[1]);
+	ft_recur(code, map, n);
 	//printf("\n%s\n", ft_filler(code));
 	return (0);
 }
