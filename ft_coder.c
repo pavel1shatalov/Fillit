@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:39:33 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 22:10:10 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:43:43 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ int		*ft_coder(char *tetr, int n)
 		return (NULL);
 	while (tetr[i])
 	{
+		if (tetr[i] == '#')
+		{
+			ft_putstr("found #\n");
+			if (cnt++ % 4)
+			{
+				*code++ = i - cut;
+				ft_putstr("and it's "); 
+				ft_putchar(*ft_itoa(*(code - 1)));
+				ft_putchar('\n');
+			}
+			cut = i;
+		}
+		i++;
+	}
+	*code = 0;
+	return (code - 3 * n);
+}
+/*
 		if (cnt < 4 && tetr[i] == '#')
 		{
 			if (cnt == 0)
@@ -62,12 +80,7 @@ int		*ft_coder(char *tetr, int n)
 			if (cnt == 4)
 				cnt = 0;
 		}
-		i++;
-	}
-	*code = 0;
-	return (code - 3 * n);
-}
-
+*/
 int		*ft_code(char *file, int n, size_t size)
 {
 	int		*code;
@@ -75,7 +88,7 @@ int		*ft_code(char *file, int n, size_t size)
 
 	remainder = size - 4;
 	code = ft_coder(ft_tetr(file), n);
-	while (remainder--)
+	while (remainder-- > 0)
 		ft_cupdate(code);
 	return (code);
 }
