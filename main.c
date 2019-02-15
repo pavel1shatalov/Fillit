@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/15 14:40:00 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:50:30 by thansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int		main(int ac, char **av)
 
 	if (ac != 2 || (fd = open(av[1], O_RDONLY)) < 0)
 	{
-		ft_putstr("usage");
-		//ft_usage();
+		ft_putstr("usage: fillit input_file\n");
 		return (0);
 	}
 	close (fd);
