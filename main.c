@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 21:53:46 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/15 13:13:14 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	close (fd);
-/*
 	if (ft_fchecker(av[1]) || ft_mchecker(av[1]))
 	{
 		ft_putstr("error");
 		return (0);
 	}
-*/
+	ft_putstr("Validation is done!\n");
 	n = ft_nbtetr(av[1]);
 	size = ft_sqrt(4 * n);
 	code = ft_code(av[1], n, size);
