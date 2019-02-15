@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:01:44 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 23:41:26 by thansen          ###   ########.fr       */
+/*   Updated: 2019/02/15 16:53:13 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int		ft_fchecker(char *file)
 
 	i = 1;
 	fd = open(file, O_RDONLY);
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) && i <= 129)
 	{
-		if (i > 129)
-			return (1);
 		if ((i % 5 != 0 && ft_strlen(line) == 4) || \
 				(i % 5 == 0 && !ft_strlen(line)))
 		{
@@ -37,6 +35,8 @@ int		ft_fchecker(char *file)
 			return (1);
 		}
 	}
+	if (i % 5 != 0 || i > 129)
+		return (1);
 	close(fd);
 	return (0);
 }
