@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/15 18:25:10 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:12:35 by thansen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int ac, char **av)
 	close(fd);
 	if (ft_fchecker(av[1]) || ft_mchecker(av[1]))
 	{
-		ft_putstr("error");
+		ft_putstr("error\n");
 		return (0);
 	}
 	n = ft_nbtetr(av[1]);
