@@ -6,13 +6,13 @@
 /*   By: ggerhold <ggerhold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 18:53:15 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/03/17 21:26:09 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/03/22 20:03:15 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_search(char *map, int nb)
+int			ft_search(char *map, int nb)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int		ft_search(char *map, int nb)
 	return (i);
 }
 
-void	ft_delete(char *map, int nb)
+void		ft_delete(char *map, int nb)
 {
 	int		i;
 
@@ -39,11 +39,41 @@ void	ft_delete(char *map, int nb)
 	}
 }
 
-void	ft_iter(int *code, char *map, int n)
+t_update	ft_backtrack(int *pseudocode, char *pseudomap, int n)
 {
-	int		nb;
-	int		cut;
+	int			nb;
+	int			cut;
+	t_update	pseudo;
 
+	nb = ft_nblock(pseudocode, n);
+	cut = ft_search(pseudomap, nb);
+	ft_delete(pseudomap, nb);
+	while (!ft_fill(pseudocode - 3, pseudomap + cut + 1, n))
+	{
+		nb--;
+		pseudocode -= 3;
+		if (nb)
+		{
+			cut = ft_search(pseudomap, nb);
+			ft_delete(pseudomap, nb);
+		}
+		else
+		{
+			pseudomap = ft_mupdate(pseudocode, pseudomap);
+			break ;
+		}
+	}
+	pseudo.code = pseudocode;
+	pseudo.map = pseudomap;
+	return (pseudo);
+}
+
+void		ft_iter(int *code, char *map, int n)
+{
+	void		*tmp;
+	t_update	set;
+
+	tmp = (void *)code;
 	while (42)
 	{
 		while (*code && ft_fill(code, map, n))
@@ -51,25 +81,12 @@ void	ft_iter(int *code, char *map, int n)
 		if (!*code)
 		{
 			ft_putstr(map);
+			ft_strdel(&map);
+			ft_memdel(&tmp);
 			return ;
 		}
-		nb = ft_nblock(code, n);
-		cut = ft_search(map, nb);
-		ft_delete(map, nb);
-		while (!ft_fill(code - 3, map + cut + 1, n))
-		{
-			nb--;
-			code -= 3;
-			if (nb)
-			{
-				cut = ft_search(map, nb);
-				ft_delete(map, nb);
-			}
-			else
-			{
-				map = ft_mupdate(code, map);
-				break ;
-			}
-		}
+		set = ft_backtrack(code, map, n);
+		code = set.code;
+		map = set.map;
 	}
 }

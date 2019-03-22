@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 21:43:30 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/03/17 20:42:45 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/03/22 19:41:45 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ char	*ft_mupdate(int *code, char *map)
 	size = 0;
 	while (map[size] != '\n')
 		size++;
+	ft_strdel(&map);
 	return (ft_map(size + 1));
 }

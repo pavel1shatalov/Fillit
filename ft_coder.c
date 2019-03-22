@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:39:33 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/15 18:24:56 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/03/22 17:21:02 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		*ft_coder(char *tetr, int n)
 		i++;
 	}
 	*code = 0;
+	ft_strdel(&tetr);
 	return (code - 3 * n);
 }
 
