@@ -6,7 +6,7 @@
 /*   By: ggerhold <ggerhold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 18:53:15 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/03/22 20:03:15 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/03/22 21:02:55 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ void		ft_delete(char *map, int nb)
 	}
 }
 
+int			ft_cut(char *pseudomap, int nb)
+{
+	int cut;
+
+	cut = ft_search(pseudomap, nb);
+	ft_delete(pseudomap, nb);
+	return (cut);
+}
+
 t_update	ft_backtrack(int *pseudocode, char *pseudomap, int n)
 {
 	int			nb;
@@ -46,25 +55,21 @@ t_update	ft_backtrack(int *pseudocode, char *pseudomap, int n)
 	t_update	pseudo;
 
 	nb = ft_nblock(pseudocode, n);
-	cut = ft_search(pseudomap, nb);
-	ft_delete(pseudomap, nb);
+	cut = ft_cut(pseudomap, nb);
 	while (!ft_fill(pseudocode - 3, pseudomap + cut + 1, n))
 	{
-		nb--;
-		pseudocode -= 3;
-		if (nb)
-		{
-			cut = ft_search(pseudomap, nb);
-			ft_delete(pseudomap, nb);
-		}
+		if (nb-- > 0)
+			pseudocode -= 3;
+		if (nb > 0)
+			cut = ft_cut(pseudomap, nb);
 		else
 		{
 			pseudomap = ft_mupdate(pseudocode, pseudomap);
 			break ;
 		}
 	}
-	pseudo.code = pseudocode;
 	pseudo.map = pseudomap;
+	pseudo.code = pseudocode;
 	return (pseudo);
 }
 
