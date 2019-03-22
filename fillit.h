@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:45:34 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/14 20:48:05 by ggerhold         ###   ########.fr       */
+/*   Updated: 2019/03/17 20:09:41 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int		get_next_line(const int fd, char **line);
 int		*ft_code(char *file, int n, size_t size);
 char	*ft_map(size_t size);
 int		ft_fill(int *code, char *map, int n);
-int		ft_recur(int *code, char *map, int n);
-int		ft_backtrack(int *code, char *map, int n);
+void	ft_iter(int *code, char *map, int n);
 int		ft_nblock(int *code, int n);
 void	ft_cupdate(int *code);
 char	*ft_mupdate(int *code, char *map);

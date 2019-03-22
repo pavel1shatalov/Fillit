@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_backtrack.c                                     :+:      :+:    :+:   */
+/*   ft_iter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggerhold <ggerhold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/14 15:08:46 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/15 18:23:02 by ggerhold         ###   ########.fr       */
+/*   Created: 2019/03/17 18:53:15 by ggerhold          #+#    #+#             */
+/*   Updated: 2019/03/17 21:26:09 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,37 @@ void	ft_delete(char *map, int nb)
 	}
 }
 
-int		ft_backtrack(int *code, char *map, int n)
+void	ft_iter(int *code, char *map, int n)
 {
 	int		nb;
 	int		cut;
 
-	nb = ft_nblock(code, n);
-	if (nb)
+	while (42)
 	{
+		while (*code && ft_fill(code, map, n))
+			code += 3;
+		if (!*code)
+		{
+			ft_putstr(map);
+			return ;
+		}
+		nb = ft_nblock(code, n);
 		cut = ft_search(map, nb);
 		ft_delete(map, nb);
-		if (ft_fill(code - 3, map + cut + 1, n))
-			if (ft_recur(code, map, n))
-				return (1);
-		if (ft_backtrack(code - 3, map, n))
-			return (1);
+		while (!ft_fill(code - 3, map + cut + 1, n))
+		{
+			nb--;
+			code -= 3;
+			if (nb)
+			{
+				cut = ft_search(map, nb);
+				ft_delete(map, nb);
+			}
+			else
+			{
+				map = ft_mupdate(code, map);
+				break ;
+			}
+		}
 	}
-	if (ft_recur(code, ft_mupdate(code, map), n))
-		return (1);
-	return (0);
 }

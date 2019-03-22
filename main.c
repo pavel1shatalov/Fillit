@@ -6,7 +6,7 @@
 /*   By: ggerhold <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 14:40:47 by ggerhold          #+#    #+#             */
-/*   Updated: 2019/02/18 13:12:35 by thansen          ###   ########.fr       */
+/*   Updated: 2019/03/17 21:30:44 by ggerhold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int		main(int ac, char **av)
 	size = ft_sqrt(4 * n);
 	code = ft_code(av[1], n, size);
 	map = ft_map(size);
-	ft_recur(code, map, n);
+	ft_iter(code, map, n);
 	return (0);
 }
