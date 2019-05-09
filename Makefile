@@ -44,7 +44,7 @@ $(LIBFT):
 	@make -C libft
 
 $(NAME): $(OBJ_DIR) $(LIBFT) $(OBJS)
-	@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -L $(LIBFT) -lft
+	@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -c $< -I$(INC_DIR) -I$(LIBFT_H) -o $@
